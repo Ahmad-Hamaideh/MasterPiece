@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+
+    <!--
+      - custom css link
+    -->
+    <link rel="stylesheet" href="./assets/css/About.css" />
+
+    <!--
+      - google font link
+    -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:wght@700;900&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!--
+      - #MAIN CONTAINER
+    -->
+
+    <div>
+
+        <header>
+
+            <nav class="navbar " style="display:flex; justify-content:space-around">
+
+                <a href="#" class="navbar-brand">
+                    <h2 style="color:white">Silvana</h2>
+                </a>
+
+                <ul class="navbar-nav">
+
+
+                    <li>
+                        <a href="Home.aspx"> <button class="btn" style=" font-size: 16px; text-transform: uppercase; padding: 18px 30px; border-radius: 50px; background-color:white">Home</button></a>
+                    </li>
+
+                </ul>
+
+                <button class="nav-toggle-btn">
+                    <span class="line one"></span>
+                    <span class="line two"></span>
+                    <span class="line three"></span>
+                </button>
+
+            </nav>
+
+        </header>
+
+        <main>
+
+            <!--
+          - #HOME SECTION
+        -->
+
+            <section class="home">
+
+                <picture>
+
+                    <source media="(max-width: 768px)" srcset=" ./assets/images/About/mobile/image-header.jpg">
+                    <source media="(min-width: 769px)" srcset="./assets/images/About/desktop/image-header.jpg">
+
+                    <img src="./assets/images/About/mobile/image-header.jpg" alt="home banner image" class="home-banner" loading="lazy">
+
+                </picture>
+
+                <div class="home-absolute-content">
+                    <h1 class="main-heading">Who are we ? </h1>
+
+                    <a href="#about">
+                        <img src="./assets/images/About/icon-arrow-down.svg" alt="icon arrow-down" class="arrow-down" loading="lazy">
+                    </a>
+                </div>
+
+            </section>
+
+
+
+
+
+            <!--
+          - #ABOUT SECTION
+        -->
+
+            <section class="about" id="about">
+
+                <div class="about-img-box grid-pos-lg">
+
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="../assets/images/About/mobile/image-transform.jpg">
+                        <source media="(min-width: 769px)" srcset="./assets/images/About/desktop/image-transform.jpg">
+
+                        <img src="../assets/images/About/mobile/image-transform.jpg" alt="about image" class="about-img" loading="lazy">
+                    </picture>
+
+                </div>
+
+                <div class="about-content">
+                    <h2 class="about-h2">About us </h2>
+
+                    <p class="about-p">
+
+                        <strong>Silvana</strong>, founded in 2023, based in Jordan, in the city of Irbid
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, optio?
+                    </p>
+
+                    <a href="#" class="about-link yellow">Learn more</a>
+                </div>
+
+                <div class="about-img-box">
+
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="./assets/images/About/mobile/image-stand-out.jpg">
+                        <source media="(min-width: 769px)" srcset="./assets/images/About/desktop/image-stand-out.jpg">
+
+                        <img src="./assets/images/About/mobile/image-stand-out.jpg" alt="about image" class="about-img" loading="lazy">
+                    </picture>
+
+                </div>
+
+                <div class="about-content">
+                    <h2 class="about-h2">What is the goal of Silvana?          </h2>
+
+                    <p class="about-p">
+                        Helping "creative" people spread their creativity
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, explicabo.
+                    </p>
+
+                    <a href="#" class="about-link pink">Learn more</a>
+                </div>
+
+            </section>
+
+
+
+
+
+            <!--
+          - #SERVICES SECTION
+        -->
+
+            <section class="services" id="services">
+
+                <div class="service-box">
+                    <div class="img-box">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./assets/images/About/mobile/image-graphic-design.jpg">
+                            <source media="(min-width: 769px)" srcset="./assets/images/About/desktop/image-graphic-design.jpg">
+
+                            <img src="./assets/images/About/mobile/image-graphic-design.jpg" alt="graphic design image" class="service-img"
+                                 loading="lazy">
+                        </picture>
+                    </div>
+
+                    <div class="service-absolute-content">
+                        <h3 class="service-h3 cyan">The quality of our products ? </h3>
+
+                        <p class="service-p cyan">
+                            Our products  are prepared by the most skilled creators,
+                            and we always aim for improvement
+                        </p>
+                    </div>
+                </div>
+
+                <div class="service-box">
+                    <div class="img-box">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./assets/images/About/mobile/image-photography.jpg">
+                            <source media="(min-width: 769px)" srcset="./assets/images/About/desktop/image-photography.jpg">
+
+                            <img src="./assets/images/About/mobile/image-photography.jpg" alt="photography image" class="service-img"
+                                 loading="lazy">
+                        </picture>
+                    </div>
+
+                    <div class="service-absolute-content">
+                        <h3 class="service-h3 blue">Join a family Silvana </h3>
+
+                        <p class="service-p blue">
+                            Register now and fulfill the conditions, and we always welcome you
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+
+
+            <!--
+          - #TESTIMONIALS SECTION
+        -->
+
+            <section class="testimonials">
+
+                <h2 class="testimonials-h2">Silvana Team </h2>
+
+                <div class="testimonials-grid">
+
+                    <div class="testimonials-client">
+
+                        <div class="client-img-box">
+                            <img src="./assets/images/About/image-emily.jpg" alt="client emily image" class="client-img" loading="lazy">
+                        </div>
+
+                        <p class="client-text">
+                            We put our trust in Sunnyside and they delivered, making sure our needs were met and deadlines were always
+                            hit.
+                        </p>
+
+                        <h4 class="client-name">Emily R.</h4>
+
+                        <p class="client-title">Marketing Director</p>
+
+                    </div>
+
+                    <div class="testimonials-client">
+
+                        <div class="client-img-box">
+                            <img src="./assets/images/About/ahmad.jpg" alt="client thomas image" class="client-img" loading="lazy">
+                        </div>
+
+                        <p class="client-text">
+                            Sunnyside’s enthusiasm coupled with their keen interest in our brand’s success made it a satisfying and
+                            enjoyable experience.
+                        </p>
+
+                        <h4 class="client-name">Ahmad Hamaideh </h4>
+
+                        <p class="client-title">Leder</p>
+
+                    </div>
+
+                    <div class="testimonials-client">
+
+                        <div class="client-img-box">
+                            <img src="./assets/images/About/image-jennie.jpg" alt="client jennie image" class="client-img" loading="lazy">
+                        </div>
+
+                        <p class="client-text">
+                            Incredible end result! Our sales increased over 400% when we worked with Sunnyside. Highly recommended!
+                        </p>
+
+                        <h4 class="client-name">Jennie F.</h4>
+
+                        <p class="client-title">Business Owner</p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+
+            <!--
+          - #PROJECTS SECTION
+        -->
+
+            <section class="projects" id="projects">
+
+                <div class="project-img-box">
+                    <a href="#">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./assets/images/About/mobile/image-gallery-milkbottles.jpg">
+                            <source media="(min-width: 769px)" srcset="./assets/images/About/desktop/image-gallery-milkbottles.jpg">
+
+                            <img src="./assets/images/About/mobile/image-gallery-milkbottles.jpg" alt="milk bottles" class="project-img">
+                        </picture>
+                    </a>
+                </div>
+
+                <div class="project-img-box">
+                    <a href="#">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./assets/images/About/mobile/image-gallery-orange.jpg">
+                            <source media="(min-width: 769px)" srcset="./assets/images/About/desktop/image-gallery-orange.jpg">
+
+                            <img src="./assets/images/About/mobile/image-gallery-orange.jpg" alt="orange fruit" class="project-img">
+                        </picture>
+                    </a>
+                </div>
+
+                <div class="project-img-box">
+                    <a href="#">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./assets/images/About/mobile/image-gallery-cone.jpg">
+                            <source media="(min-width: 769px)" srcset="./assets/images/About/desktop/image-gallery-cone.jpg">
+
+                            <img src="./assets/images/About/mobile/image-gallery-cone.jpg" alt="cone ice-cream" class="project-img">
+                        </picture>
+                    </a>
+                </div>
+
+                <div class="project-img-box">
+                    <a href="#">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./assets/images/About/mobile/image-gallery-sugar-cubes.jpg">
+                            <source media="(min-width: 769px)" srcset="./assets/images/About/desktop/image-gallery-sugar-cubes.jpg">
+
+                            <img src="./assets/images/About/mobile/image-gallery-sugar-cubes.jpg" alt="sugar cubes" class="project-img">
+                        </picture>
+                    </a>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!--<div class="container">
+
+        <div class="row">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Full Name </label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+        </div>
+    </div>-->
+        <br /><br /><br />
+        
+        <div style="width:60% ; background:none ;" class="container px-3 my-3 contact" id="contact">
+            <h3 class="service-h3 blue">contact us  </h3>
+            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="fullName" type="text" placeholder="Full Name" data-sb-validations="required" />
+                    <label for="fullName">Full Name</label>
+                    <div class="invalid-feedback" data-sb-feedback="fullName:required">Full Name is required.</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+                    <label for="emailAddress">Email Address</label>
+                    <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+                    <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+                    <label for="message">Message</label>
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
+                </div>
+                <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center mb-3">
+                        <div class="fw-bolder">Form submission successful!</div>
+                        <p>To activate this form, sign up at</p>
+                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    </div>
+                </div>
+                <div class="d-none" id="submitErrorMessage">
+                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                </div>
+                <div class="d-grid">
+                    <button class="btn btn-warning btn-lg disabled" id="submitButton" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+            </div>
+    <br /><br />
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
+
+        <!--
+      - #FOOTER
+    -->
+
+        <footer>
+
+            <div class="footer-brand">
+                <h1 style="color: hsl(166, 46%, 31%)">Silvana</h1>
+            </div>
+
+
+
+            <div class="social-links">
+
+                <a href="#">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+
+                <a href="#">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+                <a href="#">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+
+                <a href="#">
+                    <ion-icon name="logo-pinterest"></ion-icon>
+                </a>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+
+
+
+    <!--
+      - custom script
+    -->
+
+    <script>
+
+    // navbar variable
+
+    const nav = document.querySelector(".navbar-nav");
+    const navToggleBtn = document.querySelector(".nav-toggle-btn");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // navbar toggle function
+    const navToggleFunc = function () {
+      nav.classList.toggle('active');
+      navToggleBtn.classList.toggle('active');
+    }
+
+    navToggleBtn.addEventListener('click', navToggleFunc);
+
+    for (let i = 0; i < navLinks.length; i++) {
+
+      navLinks[i].addEventListener('click', navToggleFunc);
+
+    }
+
+    </script>
+
+
+
+    <!--
+      - ionicon link
+    -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
