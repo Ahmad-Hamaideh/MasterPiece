@@ -1,0 +1,132 @@
+﻿@model test.Models.Product 
+
+<link href="~/assets/product/singlePRODUCT/font-awesome.min.css" rel="stylesheet" />
+
+<link href="~/assets/product/singlePRODUCT/magnific-popup.css" rel="stylesheet" />
+<link href="~/assets/product/singlePRODUCT/elegant-icons.css" rel="stylesheet" />
+<link href="~/assets/product/singlePRODUCT/bootstrap.min.css" rel="stylesheet" />
+<!-- Favicon -->
+<link href="~/master/img/favicon.ico" rel="icon">
+<link href="~/assets/product/singlePRODUCT/nice-select.css" rel="stylesheet" />
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="~/assets/product/singlePRODUCT/owl.carousel.min.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link href="~/assets/product/singlePRODUCT/slicknav.min.css" rel="stylesheet" />
+
+<link href="~/assets/product/singlePRODUCT/style.css" rel="stylesheet" />
+
+
+
+<meta charset="utf-8">
+<title>MultiShop - Online Shop Website Template</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Free HTML Templates" name="keywords">
+<meta content="Free HTML Templates" name="description">
+
+<!-- Favicon -->
+<link href="~/master/img/favicon.ico" rel="icon">
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="~/master/lib/animate/animate.min.css" rel="stylesheet">
+<link href="~/master/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="~/master/css/style.css" rel="stylesheet">
+
+<br />
+<br />
+@using (Html.BeginForm("AddtoCart", "Products" ,Model.ProductID ,FormMethod.Post))
+{
+    <div class="container-fluid pb-5">
+
+        <div class="row px-xl-5">
+
+            <div class="col-lg-5 mb-30">
+                <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner bg-light">
+                        <div class="carousel-item active">
+                            <img class="w- h-auto" src="~/assets/images/products/@Model.Image" alt="Image">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img class="w-100 h-100" src="~/assets/images/products/n1.jpg" alt="Image">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="w-100 h-100" src="~/assets/images/products/ss8.jpg" alt="Image">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="w-100 h-100" src="~/assets/images/products/ss1.jpg" alt="Image">
+                        </div>
+
+                    </div>
+                    <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                        <i class="fa fa-2x fa-angle-left text-dark"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#product-carousel" data-slide="next">
+                        <i class="fa fa-2x fa-angle-right text-dark"></i>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="col-lg-7 h-auto mb-30">
+                <div class="h-100 bg-light p-30" style="padding: 15px 50px  ; background-color : white !important">
+
+                    <h3 style="font-size: 35px; font-weight: 500; font-family: 'Poppins';">@Model.Name </h3>
+                    <div class="d-flex mb-3">
+
+                        <small class="pt-1">(@Model.reviews.Count() Reviews)</small>
+                    </div>
+                    <p class="mb-4" style="font-size:22px">
+                        @Model.Description
+                    </p>
+
+                    <div class="d-flex mb-4">
+
+
+
+                        <h3 class="font-weight-semi-bold mb-4"> <span>@Model.Price JD</span></h3>
+
+                    </div>
+                    <p> @TempData["reg"] </p>
+                    <div class="d-flex align-items-center mb-4 pt-2">
+                        <div class="input-group quantity mr-3" style="width: 120px;">
+
+
+                           
+
+                            <input id="quantity" type="number" class="form-control bg-secondary border-0 text-center" onkeydown="return false"
+                                   name="quantity" min="1" max="">
+
+                        </div>
+                        <a href="~/products/AddtoCart/@Model.ProductID" class="btn btn-warning"> Add To Cart </a>
+                        @*<button type="submit" class="btn btn-warning"> </button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <script>
+
+    </script>
+    <script src="~/assets/product/singlePRODUCT/js/bootstrap.min.js"></script>
+    <script src="~/assets/product/singlePRODUCT/js/jquery-3.3.1.min.js"></script>
+    <script src="~/assets/product/singlePRODUCT/js/jquery.countdown.min.js"></script>
+    <script src="~/assets/product/singlePRODUCT/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/product/singlePRODUCT/js/jquery.nice-select.min.js"></script>
+    <script src="~/assets/product/singlePRODUCT/js/jquery.nicescroll.min.js"></script>
+    <script src="~/assets/product/singlePRODUCT/js/jquery.slicknav.js"></script>
+    <script src="~/assets/product/singlePRODUCT/js/main.js"></script>
+    <script src="~/assets/product/singlePRODUCT/js/mixitup.min.js"></script>
+    <script src="~/assets/product/singlePRODUCT/js/owl.carousel.min.js"></script>

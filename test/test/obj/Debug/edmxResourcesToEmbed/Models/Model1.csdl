@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SilvanaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SilvanaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="SilvanaModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="SilvanaModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="SilvanaModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="SilvanaModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUserRoles" EntityType="SilvanaModel.AspNetUserRole" />
+    <EntitySet Name="AspNetUsers" EntityType="SilvanaModel.AspNetUser" />
+    <EntitySet Name="Carts" EntityType="SilvanaModel.Cart" />
+    <EntitySet Name="categories" EntityType="SilvanaModel.category" />
+    <EntitySet Name="cities" EntityType="SilvanaModel.city" />
+    <EntitySet Name="Orders" EntityType="SilvanaModel.Order" />
+    <EntitySet Name="Order_details" EntityType="SilvanaModel.Order_details" />
+    <EntitySet Name="Payments" EntityType="SilvanaModel.Payment" />
+    <EntitySet Name="Products" EntityType="SilvanaModel.Product" />
+    <EntitySet Name="reviews" EntityType="SilvanaModel.review" />
+    <EntitySet Name="sellers" EntityType="SilvanaModel.seller" />
+    <EntitySet Name="sysdiagrams" EntityType="SilvanaModel.sysdiagram" />
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="SilvanaModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_city" Association="SilvanaModel.FK_AspNetUsers_city">
+      <End Role="city" EntitySet="cities" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_AspNetUsers" Association="SilvanaModel.FK_Cart_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_AspNetUsers" Association="SilvanaModel.FK_Order_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_AspNetUsers" Association="SilvanaModel.FK_Payment_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_review_AspNetUsers" Association="SilvanaModel.FK_review_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="review" EntitySet="reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_seller_AspNetUsers" Association="SilvanaModel.FK_seller_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="seller" EntitySet="sellers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_Product" Association="SilvanaModel.FK_Cart_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_category" Association="SilvanaModel.FK_Product_category">
+      <End Role="category" EntitySet="categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_seller_city" Association="SilvanaModel.FK_seller_city">
+      <End Role="city" EntitySet="cities" />
+      <End Role="seller" EntitySet="sellers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_details_Order" Association="SilvanaModel.FK_Order_details_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Order_details" EntitySet="Order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Payment" Association="SilvanaModel.FK_Order_Payment">
+      <End Role="Payment" EntitySet="Payments" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_details_Product" Association="SilvanaModel.FK_Order_details_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Order_details" EntitySet="Order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_seller" Association="SilvanaModel.FK_Product_seller">
+      <End Role="seller" EntitySet="sellers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_review_Product" Association="SilvanaModel.FK_review_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="review" EntitySet="reviews" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="SilvanaModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetRole" ToRole="AspNetUserRole" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRole" Relationship="SilvanaModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetUserRole" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City_ID" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="city" Relationship="SilvanaModel.FK_AspNetUsers_city" FromRole="AspNetUser" ToRole="city" />
+    <NavigationProperty Name="Carts" Relationship="SilvanaModel.FK_Cart_AspNetUsers" FromRole="AspNetUser" ToRole="Cart" />
+    <NavigationProperty Name="Orders" Relationship="SilvanaModel.FK_Order_AspNetUsers" FromRole="AspNetUser" ToRole="Order" />
+    <NavigationProperty Name="Payments" Relationship="SilvanaModel.FK_Payment_AspNetUsers" FromRole="AspNetUser" ToRole="Payment" />
+    <NavigationProperty Name="reviews" Relationship="SilvanaModel.FK_review_AspNetUsers" FromRole="AspNetUser" ToRole="review" />
+    <NavigationProperty Name="sellers" Relationship="SilvanaModel.FK_seller_AspNetUsers" FromRole="AspNetUser" ToRole="seller" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="cart_id" />
+    </Key>
+    <Property Name="cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="updated_at" Type="DateTime" Precision="0" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="SilvanaModel.FK_Cart_AspNetUsers" FromRole="Cart" ToRole="AspNetUser" />
+    <NavigationProperty Name="Product" Relationship="SilvanaModel.FK_Cart_Product" FromRole="Cart" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="category_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Quick" Type="Int32" />
+    <NavigationProperty Name="Products" Relationship="SilvanaModel.FK_Product_category" FromRole="category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="city_id" />
+    </Key>
+    <Property Name="city_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="SilvanaModel.FK_AspNetUsers_city" FromRole="city" ToRole="AspNetUser" />
+    <NavigationProperty Name="sellers" Relationship="SilvanaModel.FK_seller_city" FromRole="city" ToRole="seller" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Payment_id" Type="Int32" Nullable="false" />
+    <Property Name="ShippingAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="recipientName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="OrderNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="SilvanaModel.FK_Order_AspNetUsers" FromRole="Order" ToRole="AspNetUser" />
+    <NavigationProperty Name="Order_details" Relationship="SilvanaModel.FK_Order_details_Order" FromRole="Order" ToRole="Order_details" />
+    <NavigationProperty Name="Payment" Relationship="SilvanaModel.FK_Order_Payment" FromRole="Order" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Order_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="SilvanaModel.FK_Order_details_Order" FromRole="Order_details" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="SilvanaModel.FK_Order_details_Product" FromRole="Order_details" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Payment_ID" />
+    </Key>
+    <Property Name="Payment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Payment_Type" Type="Int32" Nullable="false" />
+    <Property Name="Payment_Amount" Type="Double" Nullable="false" />
+    <Property Name="Payment_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="userID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Payment_Info" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="SilvanaModel.FK_Payment_AspNetUsers" FromRole="Payment" ToRole="AspNetUser" />
+    <NavigationProperty Name="Orders" Relationship="SilvanaModel.FK_Order_Payment" FromRole="Payment" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="sellerID" Type="Int32" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="count" Type="Int32" />
+    <Property Name="SCNImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Carts" Relationship="SilvanaModel.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
+    <NavigationProperty Name="category" Relationship="SilvanaModel.FK_Product_category" FromRole="Product" ToRole="category" />
+    <NavigationProperty Name="Order_details" Relationship="SilvanaModel.FK_Order_details_Product" FromRole="Product" ToRole="Order_details" />
+    <NavigationProperty Name="seller" Relationship="SilvanaModel.FK_Product_seller" FromRole="Product" ToRole="seller" />
+    <NavigationProperty Name="reviews" Relationship="SilvanaModel.FK_review_Product" FromRole="Product" ToRole="review" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="review_id" />
+    </Key>
+    <Property Name="review_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="rating" Type="Double" />
+    <Property Name="comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="is_verified" Type="Int32" />
+    <NavigationProperty Name="AspNetUser" Relationship="SilvanaModel.FK_review_AspNetUsers" FromRole="review" ToRole="AspNetUser" />
+    <NavigationProperty Name="Product" Relationship="SilvanaModel.FK_review_Product" FromRole="review" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="seller">
+    <Key>
+      <PropertyRef Name="seller_id" />
+    </Key>
+    <Property Name="seller_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="seller_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="city_id" Type="Int32" Nullable="false" />
+    <Property Name="AspUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phone_number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="join_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ID_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="Boolean" />
+    <NavigationProperty Name="AspNetUser" Relationship="SilvanaModel.FK_seller_AspNetUsers" FromRole="seller" ToRole="AspNetUser" />
+    <NavigationProperty Name="city" Relationship="SilvanaModel.FK_seller_city" FromRole="seller" ToRole="city" />
+    <NavigationProperty Name="Products" Relationship="SilvanaModel.FK_Product_seller" FromRole="seller" ToRole="Product" />
+    <Property Name="Accept" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Type="SilvanaModel.AspNetRole" Role="AspNetRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SilvanaModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_city">
+    <End Type="SilvanaModel.city" Role="city" Multiplicity="0..1" />
+    <End Type="SilvanaModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="city_id" />
+      </Principal>
+      <Dependent Role="AspNetUser">
+        <PropertyRef Name="City_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_AspNetUsers">
+    <End Type="SilvanaModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="SilvanaModel.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_AspNetUsers">
+    <End Type="SilvanaModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="SilvanaModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_AspNetUsers">
+    <End Type="SilvanaModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="SilvanaModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_review_AspNetUsers">
+    <End Type="SilvanaModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="SilvanaModel.review" Role="review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="review">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_seller_AspNetUsers">
+    <End Type="SilvanaModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="SilvanaModel.seller" Role="seller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="seller">
+        <PropertyRef Name="AspUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_Product">
+    <End Type="SilvanaModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="SilvanaModel.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_category">
+    <End Type="SilvanaModel.category" Role="category" Multiplicity="1" />
+    <End Type="SilvanaModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_seller_city">
+    <End Type="SilvanaModel.city" Role="city" Multiplicity="1" />
+    <End Type="SilvanaModel.seller" Role="seller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="city_id" />
+      </Principal>
+      <Dependent Role="seller">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_details_Order">
+    <End Type="SilvanaModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="SilvanaModel.Order_details" Role="Order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="Order_details">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Payment">
+    <End Type="SilvanaModel.Payment" Role="Payment" Multiplicity="1" />
+    <End Type="SilvanaModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="Payment_ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Payment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_details_Product">
+    <End Type="SilvanaModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="SilvanaModel.Order_details" Role="Order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Order_details">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_seller">
+    <End Type="SilvanaModel.seller" Role="seller" Multiplicity="0..1" />
+    <End Type="SilvanaModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="seller">
+        <PropertyRef Name="seller_id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="sellerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_review_Product">
+    <End Type="SilvanaModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="SilvanaModel.review" Role="review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="review">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

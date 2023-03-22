@@ -1,0 +1,153 @@
+﻿@model IEnumerable<test.Models.Product>
+
+<link href="./assets/product/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/assets/product/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="~/assets/product/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="~/assets/product/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="~/assets/product/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="~/assets/product/magnific-popup.css" type="text/css">
+<link rel="stylesheet" href="~/assets/product/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="~/assets/product/slicknav.min.css" type="text/css">
+<link href="~/assets/product/styleproduct.css" rel="stylesheet" />
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="shop__sidebar">
+                    <div class="sidebar__categories">
+                        <div class="section-title">
+                            <h4>Categories</h4>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="categories__accordion">
+                                <div class="accordion" id="accordionExample">
+                                    <div class="card">
+                                        <div class="card-heading active">
+                                            <a href="~/Products/Filtered/@item.category_id">@item.category.category_Name</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>}
+                    </div>
+                    @using (Html.BeginForm("FilterProducts", "Products", FormMethod.Post))
+                    {
+                        <div class="sidebar__filter">
+                            <div class="section-title">
+                                <h4>Shop by price</h4>
+                            </div>
+                            <div class="filter-range-wrap">
+
+                                <div class="range-slider">
+                                    <div class="price-input">
+                                        <h4> Price:</h4>
+                                        <br />
+                                        <input id="minPrice" name="minPrice" type="number" min="1" style="border:solid 1px ; border-radius:5px ; width:130px ; margin:10px 0" />
+                                        <p>TO</p>
+                                        <input id="maxPrice" name="maxPrice" type="number" min="2" style="border:solid 1px ; border-radius:5px ; width:130px ;margin:10px 0" />
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br /><br />
+                            <button type="submit" class="btn btn-warning">Filter Products</button>
+
+                        </div>
+                    }
+                        @*<div class="sidebar__sizes">
+                            <div class="section-title">
+                                <h4>Shop by size</h4>
+                            </div>
+                            <div class="size__list">
+                                <label for="xxs">
+                                    person
+                                    <input type="checkbox" id="xxs">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="xs">
+                                    2 persons
+                                    <input type="checkbox" id="xs">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="xss">
+                                    5 persons
+                                    <input type="checkbox" id="xss">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="s">
+                                    8 ~ 10 persons
+                                    <input type="checkbox" id="s">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                            </div>
+                        </div>*@
+
+                    </div>
+            </div>
+            
+            <div class="col-lg-9 col-md-9">
+                <div class="row">
+
+                    @foreach (var item in Model)
+                    {
+                        if (Model != null)
+                        {
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg " data-setbg="/assets/images/products/@item.Image">
+                                        <ul class="product__hover">
+                                            <li><a href="~/assets/images/products/@item.Image" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                            <li><a href="~/Products/SingleProduct/@item.ProductID"><span class="icon_bag_alt"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h5><a href="~/Products/SingleProduct/@item.ProductID"> @item.Name</a></h5>
+                                        <P>@item.Description</P>
+                                        @*<div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>*@
+                                        <div class="product__price">  @item.Price JD </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <p> nooo </p>
+                        }
+                    }
+
+                </div>
+                <div class="col-lg-12 text-center">
+                    <div class="pagination__option">
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/assets/product/js/jquery-3.3.1.min.js"></script>
+    <script src="~/assets/product/js/bootstrap.min.js"></script>
+    <script src="~/assets/product/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/product/js/jquery-ui.min.js"></script>
+    <script src="~/assets/product/js/mixitup.min.js"></script>
+    <script src="~/assets/product/js/jquery.countdown.min.js"></script>
+    <script src="~/assets/product/js/jquery.slicknav.js"></script>
+    <script src="~/assets/product/js/owl.carousel.min.js"></script>
+    <script src="~/assets/product/js/jquery.nicescroll.min.js"></script>
+    <script src="~/assets/product/js/main.js"></script>
+    <script src="~/./assets/product/js/main1.js"></script>
+    <script src="~/assets/main1.js"></script>
+</section>

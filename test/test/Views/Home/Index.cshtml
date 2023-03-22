@@ -1,0 +1,726 @@
+﻿@model List<test.Models.Product>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+
+
+
+<!--
+  - MAIN
+-->
+
+<main>
+
+    <!--
+      - BANNER
+    -->
+
+    <div class="banner">
+
+        <div class="container">
+
+            <div class="slider-container has-scrollbar">
+
+                <div class="slider-item">
+
+                    <img src="~/assets/images/h1.JPG " alt="women's latest fashion sale" class="banner-img">
+
+                    <div class="banner-content">
+
+                        <p class="banner-subtitle">The sweets</p>
+
+                        <h2 class="banner-title"> prepared with the most skilled hands</h2>
+
+                        <p class="banner-text">
+                            discount at <b>%5</b>
+                        </p>
+
+                        <a href="#" class="banner-btn">Shop now</a>
+
+                    </div>
+
+                </div>
+
+                <div class="slider-item">
+
+                    <img src="~/assets/images/h3.jpg" alt="modern sunglasses" class="banner-img">
+
+                    <div class="banner-content">
+
+                        <p class="banner-subtitle">Join us</p>
+
+                        <h2 class="banner-title">And be a member of the Silvana family</h2>
+
+
+                        <a href="#" class="banner-btn">Register now</a>
+
+                    </div>
+
+                </div>
+
+                <div class="slider-item">
+
+                    <img src="~/assets/images/banner-3.jpg" alt="new fashion summer sale" class="banner-img">
+
+                    <div class="banner-content">
+
+                        <p class="banner-subtitle">Sale Offer</p>
+
+                        <h2 class="banner-title">New fashion summer sale</h2>
+
+                        <p class="banner-text">
+                            starting at &dollar; <b>29</b>.99
+                        </p>
+
+                        <a href="#" class="banner-btn">Shop now</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    @{
+        test.Models.SilvanaEntities db = new test.Models.SilvanaEntities();
+        var newArrivals = db.Products.Take(4);
+        var Trinnding = db.Products.Where(p => p.count > 50).Take(4);
+        //var topRated = db.Products
+        //.Where(p => p.count > 50 && p.reviews.Any(r => r.rating> 4.5 )).Take(4).ToList();
+        var topRated = db.Products.Where(p => p.count > 50).Take(4);   // للتجربة
+        var all = db.Products.ToList();
+        var countsByCategory = db.categories
+             .GroupJoin(
+             db.Products,
+             c => c.category_id,
+             p => p.category_id,
+             (c, p) => new { Category = c, ProductCount = p.Count() })
+         .Where(cp => cp.Category.Quick == 1)
+         .Select(cp => new { CategoryName = cp.Category.category_Name, ProductCount = cp.ProductCount, CategoryImage = cp.Category.category_Image  , CategoryId = cp.Category.category_id });
+        var sidecategories = db.categories
+    .Select(c => new { CategoryName = c.category_Name, CategoryImage = c.category_Image });
+
+        }
+
+
+
+    <!--
+      - CATEGORY
+    -->
+    <br />
+
+    <h3 style="text-align:center; font-family:Poppins,sans-serif;">
+        Quick Access Menu
+    </h3>
+
+    <br />
+    <div class="category">
+
+        <div class="container">
+         
+            <div class="category-item-container has-scrollbar">
+          @foreach (var item in countsByCategory)
+                {
+                    <div class="category-item">
+                        
+                        <div class="category-img-box">
+                            <img src="~/assets/images/icons/@item.CategoryImage" alt="Cakes" width="30">
+                        </div>
+
+                        <div class="category-content-box">
+
+                            <div class="category-content-flex">
+                                <h3 class="category-item-title"> @item.CategoryName</h3>
+
+                                <p class="category-item-amount">(@item.ProductCount)</p>
+                            </div>
+
+                            <a href="~/Products/Filtered/@item.CategoryId" class="category-btn"> Show all</a>
+
+                        </div>
+
+                    </div>
+                }
+
+      
+            </div>
+            </div>
+
+    </div>
+
+    <br /><br />
+
+
+
+
+    <!--
+      - PRODUCT
+    -->
+
+    <div class="product-container">
+
+        <div class="container">
+
+
+            <!--
+      - SIDEBAR
+    -->
+
+            <div class="sidebar  has-scrollbar" data-mobile-menu>
+               
+                <div class="sidebar-category">
+
+                    <div class="sidebar-top">
+                        <h2 class="sidebar-title">Category</h2>
+
+                        <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                            <ion-icon name="close-outline"></ion-icon>
+                        </button>
+                    </div>
+                    @foreach (var item in sidecategories)
+                    {
+                        <ul class="sidebar-menu-category-list">
+
+                            <li class="sidebar-menu-category">
+
+
+                                <div style=" margin:18px 0;" class="menu-title-flex">
+                                    <img src="~/assets/images/icons/@item.CategoryImage" alt="clothes" width="20" height="20"
+                                         class="menu-title-img">
+
+                                    <p class="menu-title">@item.CategoryName </p>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    }
+                </div>
+               
+                <div class="product-showcase">
+
+                </div>
+
+            </div>
+           
+
+                <div class="product-box">
+
+                    <!--
+              - PRODUCT MINIMAL
+            -->
+                    @*@foreach (var item in Model)
+                {
+                    @item.Name
+                }*@
+                    <div class="product-minimal">
+
+
+
+                        <div class="product-showcase">
+
+                            <h2 class="title">New Arrivals <a href="~/Products/NewArrivals" style="color:hsl(51deg 100% 49% ) ;font-size:12px ; margin:5px 0 ; ">Show all </a> </h2>
+
+                            <div class="showcase-wrapper has-scrollbar">
+
+                                <div class="showcase-container">
+
+                                    @foreach (var item in newArrivals)
+                                    {
+                                       
+                                        <div class="showcase">
+
+                                            <a href="~/Products/SingleProduct/@item.ProductID " class="showcase-img-box">
+                                                <img src="~/assets/images/products/pr1.jpg" alt="relaxed short full sleeve t-shirt" width="100" height="80" style="border-radius:10px" class="showcase-img">
+                                            </a>
+
+                                            <div class="showcase-content">
+
+                                                <a href="Product.aspx">
+                                                    <h4 class="showcase-title">@item.Name</h4>
+                                                </a>
+
+                                                <a href="#" class="showcase-category">@item.category.category_Name</a>
+
+                                                <div class="price-box">
+                                                    <p class="price">@item.Price JD </p>
+                                                    <del>20.00 jd</del>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                     
+                                    }
+
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="product-showcase">
+
+                            <h2 class="title">Trending <a href="~/Products/Trinnding" style="color:hsl(51deg 100% 49% ) ;font-size:12px ; margin:5px 0 ; ">Show all </a></h2>
+
+                            <div class="showcase-wrapper  has-scrollbar">
+
+                                <div class="showcase-container">
+                                    @foreach (var item in Trinnding)
+                                    {
+                                        <div class="showcase">
+
+                                            <a href="#" class="showcase-img-box">
+                                                <img src="~/assets/images/products/ss5.jpg" alt="running & trekking shoes - white" class="showcase-img" width="100" height="80" style="border-radius:10px" />
+                                            </a>
+
+                                            <div class="showcase-content">
+
+                                                <a href="#">
+                                                    <h4 class="showcase-title">@item.Name</h4>
+                                                </a>
+
+                                                <a href="#" class="showcase-category">@item.category.category_Name</a>
+
+                                                <div class="price-box">
+                                                    <p class="price">@item.Price JD</p>
+                                                    <del>$15.00</del>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    }
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="product-showcase">
+
+                            <h2 class="title">Top Rated <a href="~/Products/TopRated" style="color:hsl(51deg 100% 49% ) ;font-size:12px ; margin:5px 0 ;   "> Show all </a></h2>
+
+                            <div class="showcase-wrapper  has-scrollbar">
+
+                                <div class="showcase-container">
+                                    @foreach (var item in topRated)
+                                    {
+
+                                        <div class="showcase">
+
+                                            <a href="#" class="showcase-img-box">
+                                                <img src="~/assets/images/products/ss5.jpg" alt="running & trekking shoes - white" class="showcase-img" width="100" height="80" style="border-radius:10px" />
+                                            </a>
+
+                                            <div class="showcase-content">
+
+                                                <a href="#">
+                                                    <h4 class="showcase-title">@item.Name</h4>
+                                                </a>
+
+                                                <a href="#" class="showcase-category">@item.category.category_Name</a>
+
+                                                <div class="price-box">
+                                                    <p class="price">@item.Price JD</p>
+                                                    <del>$15.00</del>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!--
+              - PRODUCT GRID
+            -->
+
+                    <div class="product-main">
+
+                        <h2 class="title"> Newly Added Sweets</h2>
+
+                        <div class="product-grid">
+                            @foreach (var item in all)
+                            {
+                                <div class="showcase">
+
+                                    <div class="showcase-banner">
+
+                                        <img src="~/assets/images/products/@item.Image" alt="Mens Winter Leathers Jackets" style="height:220px" width="300" height="450" class="product-img default" />
+                                        <img src="~/assets/images/products/@item.Image" alt="Mens Winter Leathers Jackets" style="height:220px" width="300" height="450" class="product-img hover" />
+
+                                        <p class="showcase-badge">15%</p>
+
+                                        <div class="showcase-actions">
+
+                                            <button class="btn-action">
+                                                <ion-icon name="heart-outline"></ion-icon>
+                                            </button>
+
+                                            <button class="btn-action">
+                                                <ion-icon name="eye-outline"></ion-icon>
+                                            </button>
+
+                                            <button class="btn-action">
+                                                <ion-icon name="repeat-outline"></ion-icon>
+                                            </button>
+
+                                            <button class="btn-action">
+                                                <ion-icon name="bag-add-outline"></ion-icon>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="showcase-content">
+
+                                        <a href="#" class="showcase-category">@item.category.category_Name</a>
+
+                                        <a href="#">
+                                            <h3 class="showcase-title">@item.Name</h3>
+                                        </a>
+                                        <a href="#">
+                                            <h3 class="showcase-title">@item.Description</h3>
+                                        </a>
+                                        @*<div class="showcase-rating">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                    </div>*@
+                                        <br />
+                                        <div class="price-box">
+                                            <p class="price">@item.Price jd</p>
+                                            <del>7.00 jd</del>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            }
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+    </div>
+
+
+
+
+
+    <!--
+      - TESTIMONIALS, CTA & SERVICE
+    -->
+
+    <div>
+
+        <div class="container">
+
+            <div class="testimonials-box">
+
+                <!--
+                  - TESTIMONIALS
+                -->
+
+                <div class="testimonial">
+
+                    <h2 class="title">testimonial</h2>
+
+                    <div class="testimonial-card">
+
+                        <img src="~/assets/images/commint.jpg" alt="alan doe" class="testimonial-banner" width="80" height="80">
+
+                        <p class="testimonial-name">Ahmad Hamaideh</p>
+
+                        <p class="testimonial-title">Full stake </p>
+
+                        <img src="~/assets/images/icons/quotes.svg" alt="quotation" class="quotation-img" width="26">
+
+                        <p class="testimonial-desc">
+                            perfcto website & loved sweet
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!--
+                  - CTA
+                -->
+
+                <div class="cta-container">
+
+                    <img src="~/assets/images/cta-banner.jpg" alt="summer collection" class="cta-banner">
+
+                    <a href="#" class="cta-content">
+
+                        <p class="discount">25% Discount</p>
+
+                        <h2 class="cta-title">Winter shows </h2>
+
+                        <p class="cta-text">Starting  10 jd</p>
+
+                        <button class="cta-btn">Shop now</button>
+
+                    </a>
+
+                </div>
+
+
+
+                <!--
+                  - SERVICE
+                -->
+
+                <div class="service">
+
+                    <h2 class="title">Our Services</h2>
+
+                    <div class="service-container">
+
+                        <a href="#" class="service-item">
+
+                            <div class="service-icon">
+                                <ion-icon name="boat-outline"></ion-icon>
+                            </div>
+
+                            <div class="service-content">
+
+                                <h3 class="service-title">Worldwide Delivery</h3>
+                                <p class="service-desc">For Order Over 100 jd</p>
+
+                            </div>
+
+                        </a>
+
+                        <a href="#" class="service-item">
+
+                            <div class="service-icon">
+                                <ion-icon name="rocket-outline"></ion-icon>
+                            </div>
+
+                            <div class="service-content">
+
+                                <h3 class="service-title">Next Day delivery</h3>
+                                <p class="service-desc">Irbid Orders Only</p>
+
+                            </div>
+
+                        </a>
+
+                        <a href="#" class="service-item">
+
+                            <div class="service-icon">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </div>
+
+                            <div class="service-content">
+
+                                <h3 class="service-title">Best Online Support</h3>
+                                <p class="service-desc">Hours: 8AM - 11PM</p>
+
+                            </div>
+
+                        </a>
+
+                        @*<%--       <a href="#" class="service-item">
+
+                                <div class="service-icon">
+                                    <ion-icon name="arrow-undo-outline"></ion-icon>
+                                </div>
+
+                                <div class="service-content">
+
+                                    <h3 class="service-title">Return Policy</h3>
+                                    <p class="service-desc"> Easy & Free Return</p>
+
+                                </div>
+
+                            </a>--%>*@
+
+                        <a href="#" class="service-item">
+
+                            <div class="service-icon">
+                                <ion-icon name="ticket-outline"></ion-icon>
+                            </div>
+
+                            <div class="service-content">
+
+                                <h3 class="service-title">5% money back</h3>
+                                <p class="service-desc">For Order Over 100 jd</p>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!--
+      - BLOG
+    -->
+
+    <div class="blog">
+
+        <div class="container">
+
+            <div class="blog-container has-scrollbar">
+
+                <div class="blog-card">
+
+                    <a href="#">
+                        <img src="~/assets/images/blog1.jpg" style="height:220px" alt="Clothes Retail KPIs 2021 Guide for Clothes Executives" width="300" class="blog-banner">
+                    </a>
+
+                    <div class="blog-content">
+
+                        <a href="#" class="blog-category">Sweet</a>
+
+                        <a href="#">
+                            <h3 class="blog-title">Upcoming discounts on delivery, wait for us</h3>
+                        </a>
+
+                        <p class="blog-meta">
+                            By <cite>Mr Admin</cite> / <time datetime="2023-04-06">Apr 06, 2023</time>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="blog-card">
+
+                    <a href="#">
+                        <img src="~/assets/images/blog2.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
+                             class="blog-banner" width="300" style="height:220px">
+                    </a>
+
+                    <div class="blog-content">
+
+                        <a href="#" class="blog-category">Arbic Sweet</a>
+
+                        <h3>
+                            <a href="#" class="blog-title">Winter shows for 5%</a>
+                        </h3>
+
+                        <p class="blog-meta">
+                            By <cite>Mr Robin</cite> / <time datetime="2023-01-18">Jan 18, 2023</time>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="blog-card">
+
+                    <a href="#">
+                        <img src="~/assets/images/blog3.jpg" alt="EBT vendors: Claim Your Share of SNAP Online Revenue."
+                             class="blog-banner" width="300" style="height:220px">
+                    </a>
+
+                    <div class="blog-content">
+
+                        <a href="#" class="blog-category">Sweet</a>
+
+                        <h3>
+                            <a href="#" class="blog-title"> Caring for birthdays of cancer patients</a>
+                        </h3>
+
+                        <p class="blog-meta">
+                            By <cite>Mr Ahmad</cite> / <time datetime="2022-02-10">Feb 10, 2022</time>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="blog-card">
+
+                    <a href="#">
+                        <img src="~/assets/images/blog4.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
+                             class="blog-banner" width="300" style="height:220px">
+                    </a>
+
+                    <div class="blog-content">
+
+                        <a href="#" class="blog-category">Selvana</a>
+
+                        <h3>
+                            <a href="#" class="blog-title">New update soon</a>
+                        </h3>
+
+                        <p class="blog-meta">
+                            By <cite>Mr Ahmad</cite> / <time datetime="2022-03-15">Mar 15, 2022</time>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+
+
+
+<!--
+  - custom js link
+-->
+<script src="~/assets/js/script.js"></script>
+
+<!--
+  - ionicon link
+-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

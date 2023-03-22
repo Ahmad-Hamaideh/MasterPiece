@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b5f897061cf249c2bc28592ecef7542f" Name="Diagram1">
+        <EntityTypeShape EntityType="SilvanaModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SilvanaModel.AspNetRole" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="SilvanaModel.AspNetUserClaim" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SilvanaModel.AspNetUserLogin" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SilvanaModel.AspNetUserRole" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="SilvanaModel.AspNetUser" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="SilvanaModel.Cart" Width="1.5" PointX="8.25" PointY="9.875" />
+        <EntityTypeShape EntityType="SilvanaModel.category" Width="1.5" PointX="8.25" PointY="6.25" />
+        <EntityTypeShape EntityType="SilvanaModel.city" Width="1.5" PointX="0.75" PointY="10.25" />
+        <EntityTypeShape EntityType="SilvanaModel.Order" Width="1.5" PointX="7.5" PointY="16.375" />
+        <EntityTypeShape EntityType="SilvanaModel.Order_details" Width="1.5" PointX="12.75" PointY="13.625" />
+        <EntityTypeShape EntityType="SilvanaModel.Payment" Width="1.5" PointX="5.25" PointY="25.25" />
+        <EntityTypeShape EntityType="SilvanaModel.Product" Width="1.5" PointX="10.5" PointY="9" />
+        <EntityTypeShape EntityType="SilvanaModel.review" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="SilvanaModel.seller" Width="1.5" PointX="5.25" PointY="9.5" />
+        <EntityTypeShape EntityType="SilvanaModel.sysdiagram" Width="1.5" PointX="9.75" PointY="0.75" />
+        <AssociationConnector Association="SilvanaModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="SilvanaModel.FK_AspNetUsers_city" />
+        <AssociationConnector Association="SilvanaModel.FK_Cart_AspNetUsers" />
+        <AssociationConnector Association="SilvanaModel.FK_Order_AspNetUsers" />
+        <AssociationConnector Association="SilvanaModel.FK_Payment_AspNetUsers" />
+        <AssociationConnector Association="SilvanaModel.FK_review_AspNetUsers" />
+        <AssociationConnector Association="SilvanaModel.FK_seller_AspNetUsers" />
+        <AssociationConnector Association="SilvanaModel.FK_Cart_Product" />
+        <AssociationConnector Association="SilvanaModel.FK_Product_category" />
+        <AssociationConnector Association="SilvanaModel.FK_seller_city" />
+        <AssociationConnector Association="SilvanaModel.FK_Order_details_Order" />
+        <AssociationConnector Association="SilvanaModel.FK_Order_Payment" />
+        <AssociationConnector Association="SilvanaModel.FK_Order_details_Product" />
+        <AssociationConnector Association="SilvanaModel.FK_Product_seller" />
+        <AssociationConnector Association="SilvanaModel.FK_review_Product" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

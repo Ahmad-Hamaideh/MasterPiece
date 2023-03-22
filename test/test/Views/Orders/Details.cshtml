@@ -1,0 +1,106 @@
+﻿@model test.Models.Order
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Order</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderStatus)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ShippingAddress)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ShippingAddress)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.recipientName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.recipientName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderNotes)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderNotes)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.City)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Payment.userID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Payment.userID)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

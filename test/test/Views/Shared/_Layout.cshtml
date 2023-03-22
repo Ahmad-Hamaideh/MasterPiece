@@ -1,0 +1,991 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silvana</title>
+
+    <!--
+      - favicon
+    -->
+    <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+
+    <!--
+      - custom css link
+    -->
+    <link href="~/assets/css/style-prefixx.css" rel="stylesheet" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style-prefixx.css">
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!--
+      - google font link
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <div class="overlay" data-overlay></div>
+
+    <!--
+      - MODAL
+    -->
+
+    <div class="modal" data-modal>
+
+        <div class="modal-close-overlay" data-modal-overlay></div>
+
+        <div class="modal-content">
+
+            <button class="modal-close-btn" data-modal-close>
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="newsletter-img">
+                <img src="~/assets/images/sub.JPG " alt="subscribe newsletter" width="400" height="400">
+            </div>
+
+            <div class="newsletter">
+
+                <form action="#">
+
+                    <div class="newsletter-header">
+
+                        <h3 class="newsletter-title">Subscribe Newsletter.</h3>
+
+                        <p class="newsletter-desc">
+                            Subscribe the <b>Silvana</b> to get latest products and discount update.
+                        </p>
+
+                    </div>
+
+                    <input type="email" name="email" class="email-field" placeholder="Email Address" required>
+
+                    <button type="submit" class="btn-newsletter">Subscribe</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!--
+      - NOTIFICATION TOAST
+    -->
+
+    <div class="notification-toast" data-toast>
+
+        <button class="toast-close-btn" data-toast-close>
+            <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <div class="toast-banner">
+            <img src="~/assets/images/products/trind.jpg" alt="Rose Gold Earrings" width="80" height="70">
+        </div>
+
+        <div class="toast-detail">
+
+            <p class="toast-message">
+                Someone in new just bought
+            </p>
+
+            <p class="toast-title">
+                Chocolate with nuts
+            </p>
+
+            <p class="toast-meta">
+                <time datetime="PT2M">2 Minutes</time> ago
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!--
+      - HEADER
+    -->
+
+    <header>
+
+        <div class="header-top">
+
+            <div class="container">
+
+                <ul class="header-social-container">
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="header-alert-news">
+                    <p>
+                        <b>Free Shipping</b>
+                        This Week Order Over - 20 jd
+                    </p>
+                </div>
+
+                <div class="header-top-actions">
+
+                    <select name="currency">
+                        <option value="jd"> jd </option>
+                        <option value="usd">USD &dollar;</option>
+
+
+                    </select>
+
+                    <select name="language">
+
+                        <option value="en-US">English</option>
+                        <option value="es-Ar">Arbic</option>
+
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="header-main">
+
+            <div class="container">
+
+                <a href="#" class="header-logo">
+                    <h1 style="font-weight:800 ; font-family : Times New Roman, serif ; color:black;">Silvana</h1>
+                </a>
+
+                <div class="header-search-container">
+
+                    <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+
+                    <button class="search-btn">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+
+                </div>
+
+                <div class="header-user-actions">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Seller"))
+                        {
+                            <button class="action-btn">
+                                <a href="/seller/profile"><ion-icon name="person-outline"></ion-icon></a>
+                            </button>
+                        }
+                    }
+
+
+
+                    <button class="action-btn">
+                        <ion-icon name="heart-outline">0</ion-icon>
+                        <span class="count">0</span>
+                    </button>
+
+
+                    <a href="~/products/cart" class="action-btn">
+                        <ion-icon name="bag-handle-outline"></ion-icon>
+                        <span class="count">@Session["CartCount"]</span>
+                    </a>
+                    @{ if (!Request.IsAuthenticated)
+                        {
+                            <a style=" font-weight:500 ;  padding:7px 0 ; font-size: 18px; background: hsl(51deg 100% 49% ); border-radius: 5px; height: 43px; width: 88px; text-align: center; color: white;" href="/Account/Login">Join Us</a>}
+
+                        else
+                        {
+                            Session["join"] = "join";
+                            <a style=" font-weight:500 ;  padding:7px 0 ; font-size: 18px; background: hsl(51deg 100% 49% ); border-radius: 5px; height: 43px; width: 88px; text-align: center; color: white;" href="/Account/Registration">Join Us</a>
+                        }
+                    }
+
+                    @if (!Request.IsAuthenticated)
+                    {
+                        <a style=" font-weight: 500; padding: 7px 0; font-size: 18px; background: hsl(176.09deg 26.44% 65.88%); border-radius: 5px; height: 43px; width: 88px; text-align: center; color: white;" class="action-btn " href="~/Account/login">
+                            login
+                        </a>}
+
+                    else
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a style=" font-weight: 500; padding: 7px 0; font-size: 18px; background-color:red; border-radius: 5px; height: 43px; width: 88px; text-align: center; color: white;" class="action-btn " class="action-btn " href="javascript:document.getElementById('logoutForm').submit()">
+                                Logout
+                            </a>}
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+        <nav class="desktop-navigation-menu">
+
+            <div class="container">
+
+                <ul class="desktop-menu-category-list">
+
+                    <li class="menu-category">
+                        <a href="#" class="menu-title">Home</a>
+                    </li>
+
+                    <li class="menu-category">
+                        <a href="#" class="menu-title">Categories</a>
+
+                        <div class="dropdown-panel">
+
+                            <ul class="dropdown-panel-list">
+
+                                <li class="menu-title">
+                                    <a href="#"> Cakes</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#"> cold cake </a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Diet cake</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">
+                                        <img src="~/assets/images/Cakes.jpg" alt="Cakes collection" width="250"
+                                             height="119" />
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <ul class="dropdown-panel-list">
+
+                                <li class="menu-title">
+                                    <a href="#">Arabic Sweets</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">
+                                        <img src="~/assets/images/Arabic_Sweets.jpg" alt="men's fashion" width="250" height="119" />
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <ul class="dropdown-panel-list">
+
+                                <li class="menu-title">
+                                    <a href="#"> Chocolate Gifts</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#"> Dark Chocolate </a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Chocolate with nuts</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon </a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon </a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">
+                                        <img src="~/assets/images/Chocolate.jpg" alt="women's fashion" width="250" height="119" />
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <ul class="dropdown-panel-list">
+
+                                <li class="menu-title">
+                                    <a href="#">baked goods</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon </a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">Soon</a>
+                                </li>
+
+                                <li class="panel-list-item">
+                                    <a href="#">
+                                        <img src="~/assets/images/baked.jpg" alt="" width="250" height="119" />
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </li>
+
+                    <li class="menu-category">
+                        <a href="#" class="menu-title"> Arabic Sweets</a>
+
+                        <ul class="dropdown-list">
+
+                            <li class="dropdown-item">
+                                <a href="#">Soon</a>
+                            </li>
+
+                            <li class="dropdown-item">
+                                <a href="#">Soon</a>
+                            </li>
+
+                            <li class="dropdown-item">
+                                <a href="#">Soon</a>
+                            </li>
+
+                            <li class="dropdown-item">
+                                <a href="#">Soon</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="menu-category">
+                        <a href="about.html" class="menu-title">About </a>
+
+
+                    </li>
+
+                    <li class="menu-category">
+                        <a href="#" class="menu-title">Hot Offers</a>
+
+                        @*<%--  <ul class="dropdown-list">
+
+                                <li class="dropdown-item">
+                                    <a href="#">Earrings</a>
+                                </li>
+
+                                <li class="dropdown-item">
+                                    <a href="#">Couple Rings</a>
+                                </li>
+
+                                <li class="dropdown-item">
+                                    <a href="#">Necklace</a>
+                                </li>
+
+                                <li class="dropdown-item">
+                                    <a href="#">Bracelets</a>
+                                </li>
+
+                            </ul>--%>*@
+                    </li>
+
+
+
+                    <li class="menu-category">
+                        <a href="#" class="menu-title">Blog</a>
+                    </li>
+
+                    <li class="menu-category">
+                        <a href="about.html? #contact" class="menu-title">contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+        <div class="mobile-bottom-navigation">
+
+            <button class="action-btn" data-mobile-menu-open-btn>
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+
+            <button class="action-btn">
+                <ion-icon name="bag-handle-outline"></ion-icon>
+
+                <span class="count">0</span>
+            </button>
+
+            <button class="action-btn">
+                <ion-icon name="home-outline"></ion-icon>
+            </button>
+
+            <button class="action-btn">
+                <ion-icon name="heart-outline"></ion-icon>
+
+                <span class="count">0</span>
+            </button>
+
+            <button class="action-btn" data-mobile-menu-open-btn>
+                <ion-icon name="grid-outline"></ion-icon>
+            </button>
+
+        </div>
+
+        <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
+
+            <div class="menu-top">
+                <h2 class="menu-title">Menu</h2>
+
+                <button class="menu-close-btn" data-mobile-menu-close-btn>
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+
+            <ul class="mobile-menu-category-list">
+
+                <li class="menu-category">
+                    <a href="#" class="menu-title">Home</a>
+                </li>
+
+                <li class="menu-category">
+
+                    <button class="accordion-menu" data-accordion-btn>
+                        <p class="menu-title">CATEGORIES</p>
+
+                        <div>
+                            <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                        </div>
+                    </button>
+
+                    <ul class="submenu-category-list" data-accordion>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">Petfour</a>
+                        </li>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">Cold Sweet</a>
+                        </li>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">Western Sweet</a>
+                        </li>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">All sweet</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="menu-category">
+
+                    <button class="accordion-menu" data-accordion-btn>
+                        <p class="menu-title">Arbic Sweet </p>
+
+                        <div>
+                            <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                        </div>
+                    </button>
+
+                    <ul class="submenu-category-list" data-accordion>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">Dress & Frock</a>
+                        </li>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">Soon </a>
+                        </li>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">Soon </a>
+                        </li>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">Soon</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="menu-category">
+
+                    <button class="accordion-menu" data-accordion-btn>
+                        <p class="menu-title">HOT OFFERS</p>
+
+                        <div>
+                            <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                        </div>
+                    </button>
+
+                    <ul class="submenu-category-list" data-accordion>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">soon</a>
+                        </li>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">soon</a>
+                        </li>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">soon</a>
+                        </li>
+
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">soon</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="menu-category">
+
+                    <button class="accordion-menu" data-accordion-btn>
+                        <p class="menu-title">ABOUT</p>
+
+                        <div>
+                            <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                        </div>
+                    </button>
+
+
+                </li>
+
+                <li class="menu-category">
+                    <a href="#" class="menu-title">Blog</a>
+                </li>
+
+                <li class="menu-category">
+                    <a href="#" class="menu-title">Hot Offers</a>
+                </li>
+
+            </ul>
+
+            <div class="menu-bottom">
+
+                <ul class="menu-category-list">
+
+                    <li class="menu-category">
+
+                        <button class="accordion-menu" data-accordion-btn>
+                            <p class="menu-title">Language</p>
+
+                            <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+                        </button>
+
+                        <ul class="submenu-category-list" data-accordion>
+
+                            <li class="submenu-category">
+                                <a href="#" class="submenu-title">English</a>
+                            </li>
+
+                            <li class="submenu-category">
+                                <a href="#" class="submenu-title">Espa&ntilde;ol</a>
+                            </li>
+
+                            <li class="submenu-category">
+                                <a href="#" class="submenu-title">Fren&ccedil;h</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="menu-category">
+                        <button class="accordion-menu" data-accordion-btn>
+                            <p class="menu-title">CONTACT</p>
+                            <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+                        </button>
+
+                        <ul class="submenu-category-list" data-accordion>
+                            <li class="submenu-category">
+                                <a href="#" class="submenu-title">USD &dollar;</a>
+                            </li>
+
+                            <li class="submenu-category">
+                                <a href="#" class="submenu-title">JD</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+                <ul class="menu-social-container">
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">*@
+    @RenderBody()
+    <!--
+      - FOOTER
+    -->
+
+    <footer>
+
+
+        <div class="footer-nav">
+
+            <div class="container">
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Popular Categories</h2>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Cold Sweet</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Petfour</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Arbic sweet</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Western Sweet</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Soon</a>
+                    </li>
+
+                </ul>
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Products</h2>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Prices drop</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">New products</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Best sales</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Contact us</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Sitemap</a>
+                    </li>
+
+                </ul>
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Our Company</h2>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Delivery</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Legal Notice</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Terms and conditions</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">About us</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Secure payment</a>
+                    </li>
+
+                </ul>
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Services</h2>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Prices drop</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">New products</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Best sales</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Contact us</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Sitemap</a>
+                    </li>
+
+                </ul>
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Contact</h2>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+
+                        <address class="content">
+                            419 State 414 Rte
+                            Jordan , Irbid , 14812,  jd
+                        </address>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </div>
+
+                        <a href="tel:+607936-8058" class="footer-nav-link">(+962) 0778093314</a>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+
+                        <a href="mailto:example@gmail.com" class="footer-nav-link">Silvana@gmail.com</a>
+                    </li>
+
+                </ul>
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Follow Us</h2>
+                    </li>
+
+                    <li>
+                        <ul class="social-link">
+
+                            <li class="footer-nav-item">
+                                <a href="#" class="footer-nav-link">
+                                    <ion-icon name="logo-facebook"></ion-icon>
+                                </a>
+                            </li>
+
+                            <li class="footer-nav-item">
+                                <a href="#" class="footer-nav-link">
+                                    <ion-icon name="logo-twitter"></ion-icon>
+                                </a>
+                            </li>
+
+                            <li class="footer-nav-item">
+                                <a href="#" class="footer-nav-link">
+                                    <ion-icon name="logo-linkedin"></ion-icon>
+                                </a>
+                            </li>
+
+                            <li class="footer-nav-item">
+                                <a href="#" class="footer-nav-link">
+                                    <ion-icon name="logo-instagram"></ion-icon>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <img src="~/assets/images/payment.png" alt="payment method" class="payment-img">
+
+                <p class="copyright">
+                    Copyright &copy; <a href="#">Silvana</a> all rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/assets/js/script.js"></script>
+    
+    <!--
+      - ionicon link
+    -->
+    <script src="~/assets/product/js/main1.js"></script>
+    <script src="~/assets/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
